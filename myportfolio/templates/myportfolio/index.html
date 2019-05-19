@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="main-container">
+    <div id="work" class="content-title">
+        <h1 class="title">制作物</h1>
+    </div>
+    <section class="list-articles">
+        {% for Work in Works %}
+            <article class="article">
+                <a href="{{ Work.url }}">
+                    <div class="tumb-box">
+                        {% if Work.image %}
+                            <img src="{{ Work.image.url }}" height=auto width="100%"> 
+                        {% endif %}
+                    </div>
+                    <div class="article-info">
+                        <h1>{{ Work.name }}</h1>
+                        <p>{{ Work.description }}</p>
+                        <div class="detail">
+                            <span class="date">{{ Work.creation_complete_date | date:"Y.n.j" }}〜{{ Work.creation_complete_date | date:"Y.n.j" }}</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+        {% endfor %}
+    </section>
+    <div id="skill-set" class="content-title">
+        <h1 class="title">スキルセット</h1>
+    </div>
+    <section class="skills-list-section">
+        {% for SkillCategory in SkillCategorys %}
+            <div class="skill-category-panel">
+                <h1 class="skill-category-title">{{ SkillCategory.name }}</h1>
+                <table class="skill-table">
+                    <thead>
+                        <tr><th>スキル</th><th>経験</th></tr>
+                    </thead>
+                    <tbody>
+                        {% for SkillSet in SkillSets %}
+                            {% if SkillSet.skill_category == SkillCategory %}
+                                <tr>
+                                    <td>{{ SkillSet.skill }}</td>
+                                    <td>{{ SkillSet.experience }}</td>
+                                <tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endfor %}
+    </section>
+    <div id="profile" class="content-title">
+        <h1 class="title">プロフィール</h1>
+    </div>
+    <section class="profile-section">
+        <div class="profile-image-wrapper">
+            {% if Profile.image %}
+                <img src="{{ Profile.image.url }}" class="profile-image">
+            {% endif %}
+        </div>
+        <article class="profile-content">
+            <table>
+            <tr><th>氏名</th><td>{{ Profile.full_name }}</td></tr>
+            <tr><th>経歴</th><td>{{ Profile.career }}</td></tr>
+            <tr><th>自己紹介</th><td>{{ Profile.introduction }}</td></tr>
+            </table>
+        </article>
+    </section>
+    <div id="contact" class="content-title">
+        <h1 class="title">お問い合せ</h1>
+    </div>
+    <section>
+        <p>twitter</p>
+    </section>
+</div>
+{% endblock body %}

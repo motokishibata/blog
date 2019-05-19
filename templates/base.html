@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+</head>
+<body>
+    <header class="toppage-header">
+        <div>
+            <h1 class="top-title">
+                <a href="{% url 'index' %}">ブログ〜名前は未定〜</a>
+            </h1>
+            <nav class="main-menu">
+                <ul>
+                    <li><a href="#">プログラミング</a></li>
+                    <li><a href="#">水ようかん</a></li>
+                    <li><a href="#">バイク</a></li>
+                    <li><a href="#">雑記</a></li>
+                </ul>
+            </nav>
+            <nav class="header-menu">
+                <ul>
+                    <li><a href="{% url 'myportfolio' %}">PORTFOLIO</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    {% block body %}
+    {% endblock body %}
+    <footer class="toppage-footer">
+        <div class="footer-container">
+            <div class="footer-sns">
+                <h1 class="top-title">ブログ〜名前は未定〜</h1>
+                <ul class="sns">
+                    <li><a href="#" target="_blank">facebook</a></li>
+                    <li><a href="https://twitter.com/youkan_ms" target="_blank">twitter</a></li>
+                    <li><a href="https://qiita.com/youkan_ms" target="_blank">qiita</a></li>
+                </ul>
+            </div>
+            <div class="footer-copyright">
+                <small>© YOUKAN Co., Ltd.</small>
+                <div class="scroller">
+                    <a href="#"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

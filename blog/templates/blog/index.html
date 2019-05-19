@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="main-container">
+    <section class="list-articles">
+        <div class="content-title">
+            <h1 class="title">新着記事</h1>
+        </div>
+        {% for Post in Posts %}
+            <article class="article">
+                <a href="{% url 'detail' Post.id %}">
+                    <div class="tumb-box">
+                        {% if Post.image %}
+                            <img src="{{ Post.image.url }}" height=auto width="100%"> 
+                        {% endif %}
+                    </div>
+                    <div class="article-info">
+                        <h1>{{ Post.title }}</h1>
+                        <div class="detail">
+                            <span class="date">{{ Post.update_time | date:"Y.n.j" }}</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+        {% endfor %}
+    </section>
+</div>
+{% endblock body %}
