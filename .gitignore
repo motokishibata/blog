@@ -3,5 +3,7 @@ media/image/*
 media/profile/*
 media/work-image/*
 postgresql/data/*
+static/
 *.pyc
+*.log
 !.gitkeep

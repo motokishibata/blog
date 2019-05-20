@@ -7,10 +7,22 @@ services:
       - ./postgresql/data:/var/lib/postgresql/data
   web:
     build: .
-    command: python3 manage.py runserver 0.0.0.0:8000
+    command: uwsgi --ini /code/portfolio/django.ini
     volumes:
       - .:/code
-    ports:
-      - "8000:8000"
+    expose:
+      - "8001"
     depends_on:
       - db
+  nginx:
+    image: nginx
+    command: ["/usr/sbin/nginx", "-g", "daemon off;"]
+    ports: 
+      - "8000:8000"
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/uwsgi_params:/etc/nginx/uwsgi_params
+      - ./static:/static
+      - ./nginx/log:/var/log/nginx
+    depends_on:
+      - web

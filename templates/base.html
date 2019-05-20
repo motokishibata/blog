@@ -3,12 +3,13 @@
 <head>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'myportfolio/style.css' %}">
 </head>
 <body>
     <header class="toppage-header">
         <div>
             <h1 class="top-title">
-                <a href="{% url 'index' %}">ブログ〜名前は未定〜</a>
+                <a href="{% url 'index' %}">ようかんの開発ブログ（仮）</a>
             </h1>
             <nav class="main-menu">
                 <ul>
@@ -25,12 +26,14 @@
             </nav>
         </div>
     </header>
-    {% block body %}
-    {% endblock body %}
+    <div class="main-wrapper">
+        {% block body %}
+        {% endblock body %}
+    </div>
     <footer class="toppage-footer">
         <div class="footer-container">
+            <h1 class="top-title">ようかんの開発ブログ（仮）</h1>
             <div class="footer-sns">
-                <h1 class="top-title">ブログ〜名前は未定〜</h1>
                 <ul class="sns">
                     <li><a href="#" target="_blank">facebook</a></li>
                     <li><a href="https://twitter.com/youkan_ms" target="_blank">twitter</a></li>
