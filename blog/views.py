@@ -10,3 +10,6 @@ def detail(request, post_id):
     post = Post.objects.get(pk=post_id)
     context = {'Post': post}
     return render(request, 'blog/detail.html', context)
+
+def manage(request):
+    return render(request, 'admin/index.html')

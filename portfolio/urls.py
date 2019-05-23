@@ -22,7 +22,10 @@ from django.urls import include, path
 urlpatterns = [
     path('', include('blog.urls')),
     path('admin/', admin.site.urls),
-    path('portfolio/', include('myportfolio.urls'))
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('portfolio/', include('myportfolio.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('manage/', include('blogManager.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

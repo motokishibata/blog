@@ -11,14 +11,6 @@
             <h1 class="top-title">
                 <a href="{% url 'index' %}">ようかんの開発ブログ（仮）</a>
             </h1>
-            <nav class="main-menu">
-                <ul>
-                    <li><a href="#">プログラミング</a></li>
-                    <li><a href="#">水ようかん</a></li>
-                    <li><a href="#">バイク</a></li>
-                    <li><a href="#">雑記</a></li>
-                </ul>
-            </nav>
             <nav class="header-menu">
                 <ul>
                     <li><a href="{% url 'myportfolio' %}">PORTFOLIO</a></li>
@@ -26,7 +18,9 @@
             </nav>
         </div>
     </header>
+    <div class="header-spacer"></div>
     <div class="main-wrapper">
+        <div class="bg-band"></div>
         {% block body %}
         {% endblock body %}
     </div>
