@@ -9,7 +9,6 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
     width: 100%;
 }
 
@@ -47,7 +46,7 @@ a {
 
 .top-title {
     margin: 0px 0px 0px 30px;
-    padding-top: 3px;
+    padding-top: 8px;
     display: inline-block;
     font-size: 1.6rem;
 }
@@ -58,6 +57,7 @@ a {
 
 .main-menu > ul {
     list-style: none;
+    display: flex;
 }
 
 .main-menu > ul > li {
@@ -67,24 +67,16 @@ a {
 .header-menu {
     display: inline-block;
     position: absolute;
-    right: 10px;
+    right: 5%;
 }
 
 .header-menu > ul {
     list-style: none;
+    display: flex;
 }
 
 .header-menu > ul > li {
-    border: 1px solid #383cfd;
-}
-
-.header-menu > ul > li > a {
-    padding: 5px 6px 4px 8px;
-}
-
-.header-menu > ul > li > a:hover {
-    background-color: rgba(181, 193, 247, 0.25);
-    transition: 0.4s
+    padding-left: 30px;
 }
 
 .toppage-footer {
@@ -100,6 +92,7 @@ a {
 .footer-sns {
     width: 60%;
     display: inline-block;
+    padding-top: 5px;
 }
 
 .sns {
@@ -119,6 +112,8 @@ a {
     display: inline-block;
     position: absolute;
     right: 10px;
+    bottom: 20px;
+    vertical-align: baseline;
 }
 
 .scroller {
@@ -156,7 +151,7 @@ a {
 }
 
 .list-articles {
-    padding: 0 40px;
+    padding: 0 20px;
     display: flex;
     flex-wrap: wrap;
 }
@@ -172,13 +167,15 @@ a {
 
 .article {
     width: 33%;
-    padding: 0 30px 45px 30px;
+    padding: 0 0px 45px 30px;
     box-sizing: border-box;
     display: inline-block;
     margin: auto 0;
     font-size: 0;
     line-height: 0;
     height: 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
 }
 
 .article a:hover {
@@ -189,8 +186,6 @@ a {
 .image-link {
     overflow: hidden;
     position: relative;
-    width: 200px;
-    height: 200px;
     font-size: 0;
 }
 
@@ -242,4 +237,14 @@ a {
 .article-single > h3 {
     border-bottom: 1px #383cfd solid;
     color: #383cfd;
+}
+
+.image-wrapper {
+    width: 100%;
+    height: 174px;
+}
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }

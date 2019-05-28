@@ -5,13 +5,15 @@
     <section class="list-articles">
         {% for Post in Posts %}
             <article class="article">
-                <a href="{% url 'detail' Post.id %}" class="image-link">
+                <a href="{% url 'blog:detail' Post.id %}" class="image-link">
+                    <div class="image-wrapper">
                     {% if Post.image %}
-                        <img src="{{ Post.image.url }}" height="100%" width="100%"> 
+                        <img src="{{ Post.image.url }}" class="image"> 
                     {% endif %}
+                    </div>
                 </a>
                 <div class="article-info">
-                    <h1><a href="{% url 'detail' Post.id %}">{{ Post.title }}</a></h1>
+                    <h1><a href="{% url 'blog:detail' Post.id %}">{{ Post.title }}</a></h1>
                     <div class="detail">
                         <span class="date">{{ Post.update_time | date:"Y.n.j" }}</span>
                     </div>
