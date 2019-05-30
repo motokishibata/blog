@@ -9,9 +9,11 @@
         <span class="tag is-primary">{{ Post.category }}</span>
         <span class="tag is-success">{{ Post.sub_category }}</span>
     </p>
+    {% if Post.image %}
     <figure class="image is-128x128">
         <img src="{{ Post.image.url }}">
     </figure>
+    {% endif %}
     <p class="content">{{ Post.content }}</p>
 </div>
 {% endblock body %}
