@@ -5,12 +5,12 @@ from django.views.generic import ListView, CreateView, DetailView, UpdateView, D
 from .forms import PostForm
 from django.urls import reverse, reverse_lazy
 
-class PostListView(ListView):
+class PostListView(LoginRequiredMixin, ListView):
     model = Post
     context_object_name = 'Posts'
     template_name = 'blogManager/index.html'
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
     form_class = PostForm
     model = Post
     template_name = 'blogManager/create.html'
@@ -18,12 +18,12 @@ class PostCreateView(CreateView):
     def get_success_url(self):
         return reverse('blogManager:index')
 
-class PostDetailView(DetailView):
+class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
     context_object_name = 'Post'
     template_name = 'blogManager/detail.html'
 
-class PostUpdateView(UpdateView):
+class PostUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
     form_class = PostForm
     template_name = 'blogManager/update.html'
@@ -31,7 +31,7 @@ class PostUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('blogManager:detail', kwargs={'pk': self.object.id})
 
-class PostDeleteView(DeleteView):
+class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('blogManager:index')
     template_name = 'blogManager/delete.html'
