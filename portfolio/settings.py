@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'blog',
     'myportfolio',
     'accounts',
-    'blogManager'
+    'blogManager',
+    'blogManager.templatetags.filter_extension',
 ]
 
 MIDDLEWARE = [
@@ -74,6 +75,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries': {
+                'filter_extension': 'blogManager.templatetags.filter_extension',
+            }
         },
     },
 ]

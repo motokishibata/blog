@@ -1,0 +1,47 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% load filter_extension %}
+{% block body %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="field">
+            <label class="label">タイトル</label>
+            <div class="control">
+                {{ form.title|addcss:"input" }}
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">本文</label>
+            <div class="control">
+                {{ form.content|addcss:"textarea" }}
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">カテゴリー</label>
+            <div class="control">
+                <div class="select">
+                    {{ form.category }}
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">サブカテゴリー</label>
+            <div class="control">
+                <div class="select">
+                    {{ form.sub_category }}
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">画像</label>
+            <div class="control">
+                {{ form.image }}
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <input class="button is-link" type="submit">
+            </div>
+        </div>
+    </form>
+{% endblock body %}

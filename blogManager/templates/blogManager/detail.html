@@ -1,0 +1,17 @@
+{% extends 'admin_base.html' %}
+{% block body %}
+<a href="{% url 'blogManager:update' Post.id %}" class="button">編集</a>
+<a href="{% url 'blogManager:delete' Post.id %}" class="button">削除</a>
+<a href="{% url 'blogManager:index' %}" class="button">HOME</a>
+<div class="box">
+    <h1 class="title">{{ Post.title }}</h1>
+    <p class="content">
+        <span class="tag is-primary">{{ Post.category }}</span>
+        <span class="tag is-success">{{ Post.sub_category }}</span>
+    </p>
+    <figure class="image is-128x128">
+        <img src="{{ Post.image.url }}">
+    </figure>
+    <p class="content">{{ Post.content }}</p>
+</div>
+{% endblock body %}

@@ -1,2 +1,28 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
-index
+{% extends 'admin_base.html' %}
+{% block body %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>タイトル</th>
+            <th>カテゴリー</th>
+            <th>サブカテゴリー</th>
+            <th>作成日時</th>
+            <th>更新日時</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for Post in Posts %}
+        <tr>
+            <td><a href="{% url 'blogManager:detail' Post.id %}">{{ Post.id }}</a></td>
+            <td>{{ Post.title }}</td>
+            <td>{{ Post.category}}</td>
+            <td>{{ Post.sub_category}}</td>
+            <td>{{ Post.create_time }}</td>
+            <td>{{ Post.update_time }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'blogManager:create' %}" class="button">新規作成</a>
+{% endblock body %}

@@ -2,11 +2,16 @@
 <html lang="ja">
 <head>
     <title>{% block title %}{% endblock title %}</title>
+    {% load static %}
+    {% load filter_extension %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/admin_base.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 <body>
+<div class="container">
 {% block body %}
 {% endblock body %}
+</div>
 </body>
 </html>
