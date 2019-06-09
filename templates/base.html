@@ -10,7 +10,7 @@
     <header class="toppage-header">
         <div>
             <h1 class="top-title">
-                <a href="{% url 'blog:index' %}">ようかんの開発ブログ（仮）</a>
+                <a href="{% url 'blog:index' %}">もとチャンネル</a>
             </h1>
             <nav class="header-menu">
                 <ul>
@@ -41,9 +41,9 @@
                         </span>
                     </a></li>
                     <li><a href="https://qiita.com/youkan_ms" target="_blank">
-                        <span class="fa-stack" style="color:#4cb10d">
+                        <span class="fa-stack" style="color:#4cb10d;overflow:hidden;">
                             <i class="fa fa-square fa-stack-2x"></i>
-                            <i class="fa fa-search fa-stack-1x fa-inverse fa-2x" style="overflow:hidden"></i>
+                            <i class="fa fa-search fa-stack-1x fa-inverse fa-2x"></i>
                         </span>
                     </a></li>
                     <li><a href="https://github.com/motokishibata" target="_blank">
@@ -58,5 +58,7 @@
             </div>
         </div>
     </footer>
+<script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'myportfolio/portfolio.js' %}"></script>
 </body>
 </html>

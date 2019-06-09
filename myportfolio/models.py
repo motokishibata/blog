@@ -3,7 +3,8 @@ from django.db import models
 class Work(models.Model):
 
     name = models.CharField(max_length=50)
-    url = models.URLField(max_length=200)
+    url_description = models.CharField(max_length=20, null=True)
+    url = models.URLField(max_length=200, null=True)
     image = models.ImageField(upload_to='work-image')
     description = models.TextField()
     creation_start_date = models.DateField()
@@ -52,3 +53,10 @@ class Profile(models.Model):
     def __str__(self):
         return self.full_name
 
+class UseSkill(models.Model):
+
+    work = models.ForeignKey(Work, on_delete=models.CASCADE)
+    use_skill = models.ForeignKey(SkillSet, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.use_skill.skill

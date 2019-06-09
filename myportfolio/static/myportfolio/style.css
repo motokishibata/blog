@@ -5,11 +5,17 @@
     border-bottom: 1px solid #b6b6b6;
 }
 
+.skill-list {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    padding: 0;
+}
 .skill-category-panel {
     width: 40%;
+    list-style: none;
     padding: 10px;
-    display: inline-block;
-    border: 3px #383cfd solid;
+    border: 3px #000000 solid;
     border-radius: 5px;
     margin: 20px 0 0 50px;
 }
@@ -69,4 +75,76 @@
 .contact {
     padding: 20px 0 20px 0;
     text-align: center;
+    min-height: 900px;
+}
+
+/* モーダルウィンドウのスタイル */
+.modal {
+    position:absolute;
+    width:100%;
+    height:90vh;
+    top:0;
+    left:0;
+    display:none;
+}
+
+/* オーバーレイのスタイル */
+.overLay {
+    position:absolute;
+    top:0;
+    left:0;
+    background:rgba(200,200,200,0.9);
+    width:100%;
+    height:90vh;
+    z-index:10;
+}
+
+/* モーダルウィンドウの中身のスタイル */
+.modal .inner {
+    position:absolute;
+    z-index:11;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width: 70%;
+    height: 70vh;
+}
+
+.work-detail {
+    background-color: #F8F8F8;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 40px;
+    justify-content: space-between;
+    border-radius: 5px;
+    border: 2px solid #666666;
+}
+
+.modal-close-button {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    color: #777777;
+}
+
+.modal-close-button:after {
+    color: #777777;
+}
+
+.work-detail-left {
+    flex: 1 1 40%;
+}
+
+.work-detail-image {
+
+}
+
+.work-detail-right {
+    flex: 2 1 60%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.work-detail-description {
 }

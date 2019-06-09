@@ -7,7 +7,7 @@
     <section class="list-articles">
         {% for Work in Works %}
             <article class="article">
-                <a href="{{ Work.url }}">
+                <a href="#modal01" class="modalOpen">
                     <div class="tumb-box">
                         {% if Work.image %}
                             <img src="{{ Work.image.url }}" height=auto width="100%"> 
@@ -15,21 +15,55 @@
                     </div>
                     <div class="article-info">
                         <h1>{{ Work.name }}</h1>
-                        <p>{{ Work.description }}</p>
                         <div class="detail">
                             <span class="date">{{ Work.creation_complete_date | date:"Y.n.j" }}〜{{ Work.creation_complete_date | date:"Y.n.j" }}</span>
                         </div>
                     </div>
                 </a>
             </article>
+            <div class="modal" id="modal01">
+                <!-- モーダルウィンドウの中身 -->
+                <div class="inner">
+                    <div class="work-detail">
+                        <div class="modal-close-button">
+                            <a href="" class="modalClose"><i class="far fa-window-close fa-2x"></i></a>
+                        </div>
+                        <div class="work-detail-left">
+                            <div class="work-detail-image">
+                                {% if Work.image %}
+                                    <img src="{{ Work.image.url }}" height=auto width="100%"> 
+                                {% endif %}
+                            </div>
+                            <h2>{{ Work.name }}</h2>
+                            <div class="work-detail-technology">
+                                <p>使用技術</p>
+                                <ul>
+                                {% for skill in UseSkill %}
+                                    <li>{{ skill.use_skill.skill }}</li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="work-detail-right">
+                            <div class="work-detail-description">
+                                <p>{{ Work.description }}</p>
+                            </div>
+                            <div class="work-detail-url">
+                                <a href="{{ Work.url }}" target="_blank">{{ Work.url }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
     </section>
     <div id="skill-set" class="content-title">
         <h1 class="title">スキルセット</h1>
     </div>
     <section class="skills-list-section">
+        <ul class="skill-list">
         {% for SkillCategory in SkillCategorys %}
-            <div class="skill-category-panel">
+            <li class="skill-category-panel">
                 <h1 class="skill-category-title">{{ SkillCategory.name }}</h1>
                 <table class="skill-table">
                     <thead>
@@ -46,8 +80,10 @@
                         {% endfor %}
                     </tbody>
                 </table>
-            </div>
+                
+            </li>
         {% endfor %}
+        </ul>
     </section>
     <div id="profile" class="content-title">
         <h1 class="title">プロフィール</h1>
