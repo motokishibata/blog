@@ -1,25 +1,21 @@
 {% extends 'base.html' %}
 {% block body %}
-<div class="main-container">
-    <h1 class="title">Engineers' Blog</h1>
-    <section class="list-articles">
-        {% for Post in Posts %}
-            <article class="article">
-                <a href="{% url 'blog:detail' Post.id %}" class="image-link">
-                    <div class="image-wrapper">
+    {% for Post in Posts %}
+        <article class="media">
+            <figure class="media-left">
+                <a href="{% url 'blog:detail' Post.id %}" class="image is-64x64 is-square">
                     {% if Post.image %}
-                        <img src="{{ Post.image.url }}" class="image"> 
+                        <img src="{{ Post.image.url }}"> 
                     {% endif %}
-                    </div>
                 </a>
-                <div class="article-info">
-                    <h1><a href="{% url 'blog:detail' Post.id %}">{{ Post.title }}</a></h1>
-                    <div class="detail">
-                        <span class="date">{{ Post.update_time | date:"Y.n.j" }}</span>
-                    </div>
+            </figure>
+            <div class="media-content">
+                <div class="content">
+                    <h3 class="is-size-6-mobile"><a href="{% url 'blog:detail' Post.id %}">{{ Post.title }}</a></h3>
+                    <p>{{ Post.preview_content }}</p>
+                    <p class="is-size-7 has-text-right has-text-weight-light">{{ Post.update_time | date:"Y.n.j" }}</p>
                 </div>
-            </article>
-        {% endfor %}
-    </section>
-</div>
+            </div>
+        </article>
+    {% endfor %}
 {% endblock body %}

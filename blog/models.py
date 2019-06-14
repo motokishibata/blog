@@ -1,4 +1,5 @@
 from django.db import models
+import re
 
 class Category(models.Model):
     name = models.CharField(max_length=25)
@@ -30,3 +31,14 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def preview_content(self):
+        delete_tag_pattern = r'<.+?>'
+        deleted_tag_content = re.sub(delete_tag_pattern, '', self.content)
+        make_content = ''
+        if len(deleted_tag_content) > 50:
+            make_content = deleted_tag_content[0:50]
+        else:
+            make_content = deleted_tag_content + '...'
+        return make_content
