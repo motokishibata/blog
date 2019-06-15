@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% block body %}
-<div class="main-container single">
+<div class="single">
     <article class="article-single">
+        <h1>{{ Post.title }}</h1>
+        {% if Post.image %}
+            <img src="{{ Post.image.url }}"> 
+        {% endif %}
         {% autoescape off %}
         {{ Post.content }}
         {% endautoescape %}
