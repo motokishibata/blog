@@ -1,109 +1,81 @@
 {% extends 'base.html' %}
 {% block body %}
-<div class="main-container">
-    <div id="work" class="content-title">
-        <h1 class="title">制作物</h1>
+<section class="section">
+    <h1 class="title has-text-centered">制作物</h1>
+    <div class="tile is-ancestor">
+    {% for Work in Works %}
+        <article class="tile is-4 is-primary">
+            <a href=".modal-tile-{{ Work.id }}" class="modalOpen">
+                <div>
+                    {% if Work.image %}
+                        <img src="{{ Work.image.url }}" height=auto width="100%"> 
+                    {% endif %}
+                </div>
+                <div>
+                    <h1 class="subtitle">{{ Work.name }}</h1>
+                </div>
+            </a>
+        </article>
+        <!-- モーダルウインドウ -->
+        <div class="modal modal-tile-{{ Work.id }}">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">{{ Work.name }}</p>
+                </header>
+                <section class="modal-card-body">
+                    <p>{{ Work.description }}</p>
+                </section>
+            </div>
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+    {% endfor %}
     </div>
-    <section class="list-articles">
-        {% for Work in Works %}
-            <article class="article">
-                <a href="#modal01" class="modalOpen">
-                    <div class="tumb-box">
-                        {% if Work.image %}
-                            <img src="{{ Work.image.url }}" height=auto width="100%"> 
-                        {% endif %}
-                    </div>
-                    <div class="article-info">
-                        <h1>{{ Work.name }}</h1>
-                        <div class="detail">
-                            <span class="date">{{ Work.creation_complete_date | date:"Y.n.j" }}〜{{ Work.creation_complete_date | date:"Y.n.j" }}</span>
-                        </div>
-                    </div>
-                </a>
-            </article>
-            <div class="modal" id="modal01">
-                <!-- モーダルウィンドウの中身 -->
-                <div class="inner">
-                    <div class="work-detail">
-                        <div class="modal-close-button">
-                            <a href="" class="modalClose"><i class="far fa-window-close fa-2x"></i></a>
-                        </div>
-                        <div class="work-detail-left">
-                            <div class="work-detail-image">
-                                {% if Work.image %}
-                                    <img src="{{ Work.image.url }}" height=auto width="100%"> 
+</section>
+<section class="section">
+    <h1 class="title has-text-centered">スキルセット</h1>
+    <div class="tile is-ancestor">
+        <div class="tile is-vertical">
+        {% for SkillCategory in SkillCategorys %}
+            <div class="tile is-parent box">
+                <div class="tile is-child">
+                    <h1 class="subtitle has-text-weight-bold">{{ SkillCategory.name }}</h1>
+                    <table class="table is-fullwidth">
+                        <thead>
+                            <tr><th>スキル</th><th>経験</th></tr>
+                        </thead>
+                        <tbody>
+                            {% for SkillSet in SkillSets %}
+                                {% if SkillSet.skill_category == SkillCategory %}
+                                    <tr>
+                                        <td>{{ SkillSet.skill }}</td>
+                                        <td>{{ SkillSet.experience }}</td>
+                                    <tr>
                                 {% endif %}
-                            </div>
-                            <h2>{{ Work.name }}</h2>
-                            <div class="work-detail-technology">
-                                <p>使用技術</p>
-                                <ul>
-                                {% for skill in UseSkill %}
-                                    <li>{{ skill.use_skill.skill }}</li>
-                                {% endfor %}
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="work-detail-right">
-                            <div class="work-detail-description">
-                                <p>{{ Work.description }}</p>
-                            </div>
-                            <div class="work-detail-url">
-                                <a href="{{ Work.url }}" target="_blank">{{ Work.url }}</a>
-                            </div>
-                        </div>
-                    </div>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         {% endfor %}
-    </section>
-    <div id="skill-set" class="content-title">
-        <h1 class="title">スキルセット</h1>
-    </div>
-    <section class="skills-list-section">
-        <ul class="skill-list">
-        {% for SkillCategory in SkillCategorys %}
-            <li class="skill-category-panel">
-                <h1 class="skill-category-title">{{ SkillCategory.name }}</h1>
-                <table class="skill-table">
-                    <thead>
-                        <tr><th>スキル</th><th>経験</th></tr>
-                    </thead>
-                    <tbody>
-                        {% for SkillSet in SkillSets %}
-                            {% if SkillSet.skill_category == SkillCategory %}
-                                <tr>
-                                    <td>{{ SkillSet.skill }}</td>
-                                    <td>{{ SkillSet.experience }}</td>
-                                <tr>
-                            {% endif %}
-                        {% endfor %}
-                    </tbody>
-                </table>
-                
-            </li>
-        {% endfor %}
-        </ul>
-    </section>
-    <div id="profile" class="content-title">
-        <h1 class="title">プロフィール</h1>
-    </div>
-    <section class="profile-section">
-        <div class="profile-image-wrapper">
-            {% if Profile.image %}
-                <img src="{{ Profile.image.url }}" class="profile-image">
-            {% endif %}
         </div>
-        <article class="profile-content">
-            <table>
-            <tr><th>氏名</th><td>{{ Profile.full_name }}</td></tr>
-            <tr><th>経歴</th><td>{{ Profile.career }}</td></tr>
-            <tr><th>自己紹介</th><td>{{ Profile.introduction }}</td></tr>
-            </table>
-        </article>
-    </section>
-    <section class="contact">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd6ZVsdTNUL67W96s44CjHmE2ltzcSn_y4AJh2_AZLbtBRIZw/viewform?embedded=true" width="640" height="816" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます...</iframe>
-    </section>
-</div>
+    </div>
+</section>
+<section class="section">
+    <h1 class="title has-text-centered">プロフィール</h1>
+    <div class="columns">
+    <div class="column is-3">
+        {% if Profile.image %}
+            <img src="{{ Profile.image.url }}" class="profile-image">
+        {% endif %}
+    </div>
+    <article class="column is-9">
+        <table class="table">
+        <tr><th>氏名</th><td>{{ Profile.full_name }}</td></tr>
+        <tr><th>経歴</th><td>{{ Profile.career }}</td></tr>
+        <tr><th>自己紹介</th><td>{{ Profile.introduction }}</td></tr>
+        </table>
+    </article>
+    </div>
+</section>
 {% endblock body %}
