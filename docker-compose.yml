@@ -16,13 +16,16 @@ services:
       - db
   nginx:
     image: nginx
-    command: ["/usr/sbin/nginx", "-g", "daemon off;"]
+    command: bash -c "/usr/sbin/nginx -g 'daemon off;' && chmod 755 -R /var && chmod 400 /etc/nginx/server.key"
     ports: 
       - "80:80"
+      - "443:443"
     volumes:
       - ./nginx/conf:/etc/nginx/conf.d
       - ./nginx/uwsgi_params:/etc/nginx/uwsgi_params
       - ./static:/static
       - ./nginx/log:/var/log/nginx
+      - ./keys/server.crt:/etc/nginx/server.crt
+      - ./keys/server.key:/etc/nginx/server.key
     depends_on:
       - web

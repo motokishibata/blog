@@ -4,6 +4,7 @@ media/profile/*
 media/work-image/*
 postgresql/data/*
 /static/
+/keys/
 *.pyc
 *.log
 !.gitkeep
