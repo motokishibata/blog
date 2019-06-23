@@ -72,8 +72,8 @@
     <article class="column is-9">
         <table class="table">
         <tr><th>氏名</th><td>{{ Profile.full_name }}</td></tr>
-        <tr><th>経歴</th><td>{{ Profile.career }}</td></tr>
-        <tr><th>自己紹介</th><td>{{ Profile.introduction }}</td></tr>
+        <tr><th>経歴</th><td>{% autoescape off %}{{ Profile.career }}{% endautoescape %}</td></tr>
+        <tr><th>自己紹介</th><td>{% autoescape off %}{{ Profile.introduction }}{% endautoescape %}</td></tr>
         </table>
     </article>
     </div>
