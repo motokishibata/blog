@@ -1,3 +1,5 @@
+from django.core import validators
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 class Work(models.Model):
@@ -16,6 +18,12 @@ class Work(models.Model):
 class SkillCategory(models.Model):
     
     name = models.CharField(max_length=30)
+    sort_no = models.IntegerField(
+        default=0,
+        validators=[
+            validators.MinValueValidator(0),
+            validators.MaxValueValidator(100)
+        ])
     
     def __str__(self):
         return self.name
