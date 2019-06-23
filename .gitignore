@@ -7,4 +7,6 @@ postgresql/data/*
 /keys/
 *.pyc
 *.log
+/nginx/conf
+docker-compose.yml
 !.gitkeep
