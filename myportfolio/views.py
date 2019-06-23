@@ -3,8 +3,8 @@ from myportfolio.models import Work, SkillSet, SkillCategory, Profile, UseSkill
 
 def index(request):
     works = Work.objects.all()
-    skill_sets = SkillSet.objects.all()
-    skill_categorys = SkillCategory.objects.all()
+    skill_sets = SkillSet.objects.order_by('sort_no').all()
+    skill_categorys = SkillCategory.objects.order_by('sort_no').all()
     profile = Profile.objects.first()
     use_skill = UseSkill.objects.all()
 

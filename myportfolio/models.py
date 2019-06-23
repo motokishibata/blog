@@ -33,6 +33,12 @@ class SkillSet(models.Model):
     skill_category = models.ForeignKey(SkillCategory, on_delete=models.CASCADE)
     skill = models.CharField(max_length=50)
     experience = models.CharField(max_length=200)
+    sort_no = models.IntegerField(
+        default=0,
+        validators=[
+            validators.MinValueValidator(0),
+            validators.MaxValueValidator(100)
+        ])
 
     CATEGORY_FRONT_END = 1
     CATEGORY_BACK_END = 2
