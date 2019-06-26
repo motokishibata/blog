@@ -9,7 +9,7 @@ $(function(){
     });
      
     // モーダルウィンドウが閉じるときの処理    
-    $(".modal-close").click(function(){
+    $(".delete").click(function(){
         $(this).parents(".modal").removeClass("is-active");
         return false;
     });  

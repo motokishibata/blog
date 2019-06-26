@@ -1,0 +1,5 @@
+.is-image-fit {
+    width: 250px;
+    height: 180px;
+    object-fit: scale-down;
+}

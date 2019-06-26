@@ -2,32 +2,35 @@
 {% block body %}
 <section class="section">
     <h1 class="title has-text-centered">制作物</h1>
-    <div class="tile is-ancestor">
+    <div class="columns is-multiline">
     {% for Work in Works %}
-        <article class="tile is-4 is-primary">
+        <div class="column is-4">
+            <div class="card">
             <a href=".modal-tile-{{ Work.id }}" class="modalOpen">
-                <div>
+                <figure>
                     {% if Work.image %}
-                        <img src="{{ Work.image.url }}" height=auto width="100%"> 
+                        <img src="{{ Work.image.url }}" class="is-image-fit"> 
                     {% endif %}
-                </div>
-                <div>
-                    <h1 class="subtitle">{{ Work.name }}</h1>
+                </figure>
+                <div class="card-content has-background-white-ter">
+                    <p>{{ Work.name }}</p>
                 </div>
             </a>
-        </article>
+            </div>
+        </div>
         <!-- モーダルウインドウ -->
         <div class="modal modal-tile-{{ Work.id }}">
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
                     <p class="modal-card-title">{{ Work.name }}</p>
+                    <button class="delete" aria-label="close"></button>
                 </header>
                 <section class="modal-card-body">
+                    <p>{{ Work.url_description }}：<a href="{{ Work.url }}">{{ Work.url }}</a></p>
                     <p>{{ Work.description }}</p>
                 </section>
             </div>
-            <button class="modal-close is-large" aria-label="close"></button>
         </div>
     {% endfor %}
     </div>
