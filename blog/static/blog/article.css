@@ -19,3 +19,6 @@
     margin: 20px 0 10px 0;
     font-weight: bold;
 }
+code {
+    font-family: Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+}
