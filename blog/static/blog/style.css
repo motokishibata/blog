@@ -1,3 +1,40 @@
 a {
     color: #363636;
 }
+
+.right_side-default {
+    height:100vh;
+    padding-top:50px;
+    background-color:black;
+    font-family: 'Osaka-Mono';
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.monoris-font {
+    color: black;
+    text-shadow:
+        1px 1px 10px rgb(255, 0, 0),
+        1px -1px 10px rgb(255, 0, 0),
+        -1px 1px 10px rgb(255, 0, 0),
+        -1px -1px 10px rgb(255, 0, 0),
+        0px 0px 11px rgba(255, 0, 0, 0.8);
+}
+.monoris-icon {
+    font-size: 8rem;
+}
+.monoris-title {
+    font-size: 2.5rem;
+    line-height: 1;
+}
+.monoris-num {
+    font-size: 7rem;
+    line-height: 1.1;
+}
+.monoris-small {
+    font-size: 1.5rem;
+}
+.monoris-break-line {
+    line-height: 1;
+}

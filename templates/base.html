@@ -39,9 +39,15 @@
                     {% endblock body %}
                 </div>
                 <div class="column is-3 is-hidden-touch">
-                    <div class="has-background-white-ter" style="height:100vh;padding-top:50px;">
-                        <p style="writing-mode:vertical-rl;margin: 0 auto;font-size:120px;">ここ準備中</p>
-                    </div>
+                    {% block right_side %}
+                        <div class="right_side-default">
+                            <p class="monoris-font monoris-icon">▽</p>
+                            <p class="monoris-font monoris-title">MOTOKI</p>
+                            <p class="monoris-font monoris-num">01</p>
+                            <p class="monoris-font monoris-break-line">SOUND<br>ONLY</p>
+                            <p class="monoris-font monoris-small">SELECTED</p>
+                        </div>
+                    {% endblock right_side %}
                 </div>
             </div>
         </div>
