@@ -26,6 +26,7 @@ class Post(models.Model):
         SubCategory, on_delete=models.CASCADE
     )
     image = models.ImageField(upload_to="image", null=True)
+    active = models.BooleanField(default=False)
     create_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now=True)
 

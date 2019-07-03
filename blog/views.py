@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Post
 
 def index(request):
-    Posts = Post.objects.order_by('update_time')
+    Posts = Post.objects.filter(active=True).order_by('update_time')
     context = {'Posts': Posts}
     return render(request, 'blog/index.html', context)
 
