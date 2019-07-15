@@ -43,3 +43,12 @@ class Post(models.Model):
         else:
             make_content = deleted_tag_content + '...'
         return make_content
+
+class Comment(models.Model):
+    post = models.ForeignKey(
+        Post, on_delete=models.CASCADE
+    )
+    nickname = models.CharField(max_length=50, default="名無しの水ようかんさん")
+    comment = models.TextField()
+    active = models.BooleanField(default=True)
+    post_datetime = models.DateTimeField(auto_now=True)
